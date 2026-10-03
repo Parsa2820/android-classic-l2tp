@@ -134,3 +134,7 @@ The handshake path is the TunnelForge engine, not a stub. If a particular server
 2. Compare `adb logcat -s tunnel_engine:V` with Libreswan `auth.log` inside the container.
 3. Keying mismatches show up as Quick Mode decrypt errors. `TUNNEL_FORGE_KEYMAT_VARIANT` in `app/src/main/cpp/CMakeLists.txt` selects the KEYMAT layout (1 is the default).
 4. Inner L2TP UDP checksums are left at 0 (`TUNNEL_FORGE_ESP_INNER_UDP_NO_CHECKSUM`), which is legal in RFC 768 and matches the servers this engine was written for.
+
+## Acknowledgements
+
+This client was written with a large language model, through Grok Bot, in Cursor.
