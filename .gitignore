@@ -1,0 +1,17 @@
+.gradle/
+agent-tools/
+local.properties
+build/
+**/build/
+.idea/
+*.iml
+.cxx/
+.externalNativeBuild/
+captures/
+*.apk
+*.aab
+*.ap_
+.DS_Store
+lab/.env
+native/build/
+*.log

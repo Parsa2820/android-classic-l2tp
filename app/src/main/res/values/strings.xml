@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Classic L2TP</string>
+    <string name="vpn_session_name">Classic L2TP</string>
+    <string name="vpn_channel_name">L2TP/IPsec</string>
+    <string name="vpn_notification_title">Classic L2TP</string>
+    <string name="vpn_notification_connecting">Negotiating IKEv1, L2TP, and PPP</string>
+    <string name="vpn_notification_connected">Connected · %1$s</string>
+    <string name="vpn_action_disconnect">Disconnect</string>
+</resources>

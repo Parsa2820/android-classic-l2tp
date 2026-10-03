@@ -1,0 +1,11 @@
+Native L2TP/IPsec engine imported from TunnelForge
+https://github.com/evokelektrique/tunnel-forge
+commit a71ef7cd9441a34924bb2ea416af75080694de2d (2026-08-31)
+
+License: GPL-3.0-only. See /LICENSE and /ATTRIBUTION.md.
+
+Local changes on top of that commit:
+- JNI class names point at dev.l2tpipsec.client (VpnBridge, VpnTunnelEvents, TunnelVpnService).
+- tunnel_disconnect() and the nativeDisconnect JNI entry close a negotiated session.
+- ipsec_negotiate() keeps esp_fd at -1 until a live socket exists, and clears it after a failed handshake so a later close cannot hit stdin or a recycled descriptor.
+- C standard is C11. mbedTLS is the vendored 2.28.9 tree with MBEDTLS_MD4_C enabled for MS-CHAPv2.

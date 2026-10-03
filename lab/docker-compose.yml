@@ -1,0 +1,29 @@
+# Classic L2TP/IPsec lab: Libreswan (IKEv1) + xl2tpd (PPP MS-CHAPv2).
+# Image: hwdsl2/ipsec-vpn-server. L2TP/IPsec PSK is enabled by default alongside IKEv2.
+#
+# Host networking is intentional. Publishing UDP 500/4500 through docker-proxy
+# rewrites the IKE source address and breaks NAT-T. Run this on Linux.
+#
+#   cp .env.example .env
+#   # Set VPN_PUBLIC_IP to an address the client uses to reach this host.
+#   docker compose up -d
+#
+# The Android client forces NAT-T (ESP-in-UDP on 4500) because a stock app cannot
+# send IP protocol 50. That matches phones behind NAT and this lab.
+
+services:
+  vpn:
+    image: hwdsl2/ipsec-vpn-server
+    restart: unless-stopped
+    network_mode: host
+    container_name: classic-l2tp-lab
+    privileged: true
+    environment:
+      VPN_PUBLIC_IP: ${VPN_PUBLIC_IP:?Set VPN_PUBLIC_IP in .env}
+      VPN_IPSEC_PSK: ${VPN_IPSEC_PSK:?Set VPN_IPSEC_PSK in .env}
+      VPN_USER: ${VPN_USER:?Set VPN_USER in .env}
+      VPN_PASSWORD: ${VPN_PASSWORD:?Set VPN_PASSWORD in .env}
+      VPN_DNS_SRV1: ${VPN_DNS_SRV1:-1.1.1.1}
+      VPN_DNS_SRV2: ${VPN_DNS_SRV2:-9.9.9.9}
+    volumes:
+      - /lib/modules:/lib/modules:ro

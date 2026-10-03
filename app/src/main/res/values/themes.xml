@@ -1,0 +1,8 @@
+<resources>
+    <style name="Theme.ClassicL2tp" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:statusBarColor">#0E1412</item>
+        <item name="android:navigationBarColor">#0E1412</item>
+        <item name="android:windowBackground">#0E1412</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
